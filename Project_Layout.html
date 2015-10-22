@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- 
+ Mikaela Cubon, 
+ Professor Kuhail
+ CS490 Fall Semester
+ 9/19/2015
+Due: 10/23/2015
+Project 1-->
+
+<html>
+    <head>
+        <title>Rent A Movie</title>        
+        <!-- Link in the external CSS and JS files-->
+        <link rel="stylesheet" type="text/css" href="CSS/ProjectStyle.css">
+        <link rel="stylesheet" type="text/css" href="CSS/ProjectStyle-Mobile.css">
+        <script id="movie-template" type="text/html">
+        <div class='movieElement'>
+            <img src='{{photo}}'>
+			<div class='titleYearContainer'>
+				<div class='movie_title'>{{title}}</div>
+				<div class='movie_year'>{{year}}</div>
+			</div>
+			<div class='informationContainer'>
+				<div class='rating'>Rating: {{rating}}</div>
+				<div class="movie_cast">Starring: {{starring}}</div>
+				<div class="HD_quality">{{HD}}</div>
+				<div class="movie_des">{{description}}</div>
+			</div>
+        </div> 
+        </script>
+        <script id="suggestion-template" type="text/html">
+            <div class='suggestions' id='{{title}}'>{{title}}({{year}}) Starring: {{starring}}</div>
+        </script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="JS/movieElementMaker.js"></script>
+        <script src="Data/movies.js"></script>    
+        <script src="JS/ProjectFunction.js"></script>        
+    </head>
+    
+    <body>
+        <!-- The header consists of the website logo, the title, and a search box. -->
+        <div class="banner">
+            <!--  the website logo -->
+            <div class= logo>
+                <img src="Data/Icons/movie.png" alt="movie reel">
+            </div>
+            <!--  the title -->
+            <div class="the_title">
+                 Rent A Movie
+                 <!-- this will be formatted with Oleo.woff font -->
+             </div>
+            
+            <!--  the searchbar encompasses searchbar and button -->
+            <div class="searchbar">
+                <!--Upon clicking “Search”, the page displays the movies that match what the
+                    user typed in. Write JS code that does that. -->
+                <!-- There will also be Live Search-->
+                <div class="searchbox">
+                    <input id="search_input" type="text" name="search">
+                </div>
+                <div class="searchbutton">
+                    <button id="search"> search </button>
+                </div>
+                <div id="suggestionBox" class="suggestionBox">
+                </div>
+            </div>
+            
+        </div>
+        <!--////////////////////////////////////////////////////////////////////////-->
+        
+        
+        <!-- will sort the movies based on given options-->
+        <div class ="sort_options">
+            Sort by:
+            <select id="sort_options"> <!-- i changed the way sort_options worked a bit-->
+                <!-- The user can sort the movies by rating or year.-->
+                <option>year</option>
+                <option>rating</option>
+            </select>
+            
+            <!-- will change movie display; options are list view and grid view-->
+            <div class="view_options"> <!--the code for these buttons is within the projectfunction.js-->
+                <img id="list" src="Data/Icons/list.jpg" alt="list view">
+                <img id="grid" src="Data/Icons/grid.jpg" alt="grid view">
+            </div>
+        </div>
+        
+        <!--my code in projectfunction.js handles the population and switching of views
+        the following line is all that is needed to show the movies on the page-->
+        <div id="movies" class="gallery">
+        </div>
+       
+        
+    </body>
+</html>

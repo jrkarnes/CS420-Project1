@@ -1,0 +1,249 @@
+/* 
+    Created on : Oct 9, 2015, 12:46:41 PM
+    Authors     : Mikaela Cubon & Justin Karnes
+*/
+
+/* Header information and other such things */
+
+div.banner{
+    /*background to upper strip of page*/
+    background-color: lightgray;
+    width: 100%;
+    height: 50px;
+}
+
+div.logo img{
+    width: 50px;
+    height: 50px;   
+}
+div.logo{
+    position: relative;
+    float: left;
+    bottom: 2px;
+}
+
+div.the_title{
+    position: relative;
+    padding-top: 15px;
+    float: left;
+    font-family: TitleFont;
+    padding-right: 5px;
+}
+
+/* Live Search Styling */
+
+div.searchbar{
+    /*encopases input field and button*/
+   padding-top: 10px;
+   padding-bottom: 10px;
+   float:left;
+   height:22px;  
+}
+
+div.searchbar > div#suggestionBox {
+width:470px;
+position:relative;
+padding-top:5px;
+top:21px;
+border:1px ridge lightgrey;
+text-align:left;
+background-color:white;
+z-index:2;
+}
+
+div.searchbar > div#suggestionBox  > .suggestions{
+padding:5px;
+}
+
+div.searchbar > div#suggestionBox  > .suggestions:hover {
+background-color:rgb(245,245,245)
+}
+
+div.searchbar > div#suggestionBox.hidden {
+display:none;
+}
+
+div.searchbox{
+   float:left;
+}
+div.searchbutton{
+  float:left;
+}
+
+/* Category Sort */
+
+div.sort_options{
+    padding-top: 30px;
+    position: relative;
+    bottom: 5px;
+    padding-bottom: 10px;
+    border-bottom: solid lightblue 1px;
+    /* movie sort options*/
+}
+
+div.view_options{
+    float: right;
+    position: relative;
+    bottom: 5px;
+    /*grid vs. list view*/    
+}
+div.view_options img{
+   height: 25px;
+}
+
+		   /* Justin Karnes */
+	/* Movie Element Gallery View */
+	
+div#movies.gallery > .movieElement
+{position: relative; float:left;
+height:200px; width:200px;
+margin-top:30px; margin-left:30px;
+padding:5px;
+border:1px solid lightgrey;
+overflow:hidden;
+z-index:1;
+}
+
+div#movies.gallery > .movieElement > img {
+	width:200px; height:200px;
+}
+
+div#movies.gallery > .movieElement > .informationContainer > div.HD_quality {
+position:absolute;
+top:20px;left:20px;}
+
+div#movies.gallery > .movieElement > .informationContainer > div.HD_quality > img {
+height:20px; width:40px;
+}
+
+div#movies.gallery > .movieElement > div.titleYearContainer > div.movie_title{
+position:absolute;
+bottom:25px;
+height:20px; width:200px;
+text-align:center;
+background-color:rgba(0,0,0,0.4);
+color:white;
+font-weight:bold;
+text-transform:uppercase;
+padding-top:5px;
+transition: height 1.25s, background-color 1.25s;
+-webkit-transition: height 1.25s, background-color 1.25s;
+-o-transition: height 1.25s, background-color 1.25s;
+-moz-transition: height 1.25s, background-color 1.25s;
+}
+
+div#movies.gallery > .movieElement > div.titleYearContainer > div.movie_year{
+position:absolute;
+bottom:5px;
+height:20px; width:200px;
+text-align:center;
+background-color:rgba(0,0,0,0.4);
+color:white;
+transition:bottom 1.25s, background-color 1.25s;
+-webkit-transition:bottom 1.25s, background-color 1.25s;
+-o-transition:bottom 1.25s, background-color 1.25s;
+-moz-transition:bottom 1.25s, background-color 1.25s;
+}
+
+div#movies.gallery > .movieElement > div.informationContainer > div.movie_cast {
+position:absolute;
+bottom:-40px;
+height:40px; width:200px;
+text-align:center;
+background-color:rgba(0,0,0,0.7);
+color:white;
+text-align:left;
+transition:bottom 1.25s, background-color 1.25s;
+-webkit-transition:bottom 1.25s, background-color 1.25s;
+-o-transition:bottom 1.25s, background-color 1.25s;
+-moz-transition:bottom 1.25s, background-color 1.25s;
+}
+
+div#movies.gallery > .movieElement > div.informationContainer > div.movie_des > span {
+	display:none;
+}
+
+	/* Hover Transitions for Individual Movie Elements */
+
+div#movies.gallery > .movieElement:hover > div.titleYearContainer > div.movie_title{
+height:120px;
+background-color:rgba(0,0,0,0.6);
+}
+
+div#movies.gallery > .movieElement:hover > div.titleYearContainer > div.movie_year{
+bottom:100px;
+background-color:transparent;
+}
+
+div#movies.gallery > .movieElement:hover > div.informationContainer > div.movie_cast{
+bottom:5px;
+}
+
+	/* Movie Element in List View */
+
+div#movies.listview > .movieElement
+{
+position:relative;
+height:260px;
+border-bottom: 1px solid rgb(245,245,245);
+}
+
+div#movies.listview > .movieElement > img {
+	position: absolute;
+	top:15px; left:10px;
+	width:220px; height:220px;
+	padding:5px;
+	border:1px solid lightgrey;
+}
+
+div#movies.listview > .movieElement > div.HD_quality {
+display:none;
+}
+
+div#movies.listview > .movieElement > div.titleYearContainer {
+position:absolute;
+top:10px; left:240px;
+padding-left:10px;
+text-transform:uppercase;
+padding-bottom:10px;
+}
+
+div#movies.listview > .movieElement > div.titleYearContainer > div.movie_title {
+position:relative; float:left;
+font-size:18px;
+font-weight:bold;
+}
+
+div#movies.listview > .movieElement > div.titleYearContainer > div.movie_year{
+position:relative; float:left;
+padding-left:10px;
+font-size:15;
+color:grey;
+}
+
+div#movies.listview > .movieElement > div.informationContainer {
+position:absolute;
+top:40px; left:240px;
+padding-left:10px;
+}
+
+div#movies.listview > .movieElement > div.informationContainer > .HD_quality {
+display:none;}
+
+div#movies.listview > .movieElement > div.informationContainer > div.rating  img {
+height:20px; width:20px; padding-right:5px;
+}
+
+div#movies.listview > .movieElement > div.informationContainer > div.movie_cast {
+padding-bottom:20px;
+position:relative;
+text-overflow:nowrap;
+}
+
+div#movies.listview > .movieElement > div.informationContainer > div.movie_des {
+position:relative;
+line-height:15px;
+width:450px;
+background-color:rgb(236, 255, 255);
+padding-bottom:20px;
+}
