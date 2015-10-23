@@ -121,29 +121,33 @@ div#movies.gallery > .movieElement > .informationContainer > div.HD_quality > im
 height:20px; width:40px;
 }
 
-div#movies.gallery > .movieElement > div.titleYearContainer > div.movie_title{
+div#movies.gallery > .movieElement > div.titleYearContainer {
 position:absolute;
-bottom:25px;
-height:20px; width:200px;
-text-align:center;
+height:40px;
+width:200px;
 background-color:rgba(0,0,0,0.4);
 color:white;
+text-align:center;
 font-weight:bold;
 text-transform:uppercase;
-padding-top:5px;
+bottom:5px;
 transition: height 1.25s, background-color 1.25s;
 -webkit-transition: height 1.25s, background-color 1.25s;
 -o-transition: height 1.25s, background-color 1.25s;
 -moz-transition: height 1.25s, background-color 1.25s;
 }
 
+div#movies.gallery > .movieElement > div.titleYearContainer > div.movie_title{
+position:absolute;
+top:0px;
+height:20px; width:200px;
+padding-top:2px;
+}
+
 div#movies.gallery > .movieElement > div.titleYearContainer > div.movie_year{
 position:absolute;
-bottom:5px;
+top:20px;
 height:20px; width:200px;
-text-align:center;
-background-color:rgba(0,0,0,0.4);
-color:white;
 transition:bottom 1.25s, background-color 1.25s;
 -webkit-transition:bottom 1.25s, background-color 1.25s;
 -o-transition:bottom 1.25s, background-color 1.25s;
@@ -152,16 +156,16 @@ transition:bottom 1.25s, background-color 1.25s;
 
 div#movies.gallery > .movieElement > div.informationContainer > div.movie_cast {
 position:absolute;
-bottom:-40px;
-height:40px; width:200px;
+bottom:5px;
+height:0px; width:200px;
 text-align:center;
 background-color:rgba(0,0,0,0.7);
 color:white;
 text-align:left;
-transition:bottom 1.25s, background-color 1.25s;
--webkit-transition:bottom 1.25s, background-color 1.25s;
--o-transition:bottom 1.25s, background-color 1.25s;
--moz-transition:bottom 1.25s, background-color 1.25s;
+transition:height 1.25s, background-color 1.25s;
+-webkit-transition:height 1.25s, background-color 1.25s;
+-o-transition:height 1.25s, background-color 1.25s;
+-moz-transition:height 1.25s, background-color 1.25s;
 }
 
 div#movies.gallery > .movieElement > div.informationContainer > div.movie_des > span {
@@ -170,7 +174,7 @@ div#movies.gallery > .movieElement > div.informationContainer > div.movie_des > 
 
 	/* Hover Transitions for Individual Movie Elements */
 
-div#movies.gallery > .movieElement:hover > div.titleYearContainer > div.movie_title{
+div#movies.gallery > .movieElement:hover > div.titleYearContainer {
 height:120px;
 background-color:rgba(0,0,0,0.6);
 }
@@ -181,7 +185,7 @@ background-color:transparent;
 }
 
 div#movies.gallery > .movieElement:hover > div.informationContainer > div.movie_cast{
-bottom:5px;
+height:40px;
 }
 
 	/* Movie Element in List View */
