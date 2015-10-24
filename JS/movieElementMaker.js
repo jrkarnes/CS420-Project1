@@ -28,20 +28,30 @@ movieElementMaker.prototype.get_html_unrepeated=function(values){
                     html= this.replace_Block(key, values[key],html);
                 else{ 
                     var re = new RegExp("{{" + key + "}}", 'g');//define the key term we are looking to replace with actual data
-                    if(values[key]==true)//if the value of the key being looked at is true
+                    if(values[key].toLocaleString()=="true")//if the value of the key being looked at is true
                     {
                         html=html.replace(re,"<img src='Data/Icons/HD.png'>")//replace the key hd with the image
                     }
-                    else if(values[key]<=5)//if the key has a value of less than 5(which should only be ratings
+                    else if(values[key]<=5 && values[key].toString()!="false")//if the key has a value of less than 5(which should only be ratings and the comparison to false prevents ratings equal to false effecting this
                     {
                         var numStars= values[key];
+                        var emptStars= 5-numStars;//determines amount of empty stars
                         var stars = "";
                         while(numStars > 0)
                         {
                             stars+="<span><img src='Data/Icons/gold_star.png'></span>";
                             --numStars;
                         }
+                        while(emptStars>0)//to place the empty stars
+                        {
+                            stars+="<span><img src='Data/Icons/regular_star.png'></span>";
+                            --emptStars;
+                        }
                         html = html.replace(re,stars);//will replace the key rating with the variable stars, which should be a string of span statements
+                    }
+                    else if(values[key].toString()=="false")//to prevent placing empty stars where they shouldnt be
+                    {
+                        html = html.replace(re,"");//if the hd quality is false, make sure nothing for that key shows up
                     }
                     else
                     {
@@ -75,23 +85,31 @@ movieElementMaker.prototype.getResults = function(searchKey,values){
     var html = "";
     if($.isArray(values)){//if the data is an array
         for (var i = 0; i < values.length; ++i) {//iterte throught the array
-            if(this.checkMatch(values[i],searchKey)){
+            if(this.checkMatch(values[i],searchKey)){//checks for a match
                 html+=this.get_html_unrepeated(values[i]);//add each item in the arry to the html code
             }
         }
     }
-    else if(this.checkMatch(values,searchKey)){
+    else if(this.checkMatch(values,searchKey)){//if the values passed in wasn't an array
         html+=this.get_html_unrepeated(values);
     }
     return html;
 };
 
 movieElementMaker.prototype.checkMatch=function(values,searchTerm){    
-   var possMatch = values; 
-    for (var key in possMatch){
-        if (possMatch[key].toLowerCase().search(searchTerm.toLowerCase().trim()) != -1) //looks for stuff that contains what has been typed in
-            return true;
-        else
-            return false;
+   var possMatch = values;
+   var match = false;
+   var possMatchString;
+    for (var key in possMatch){//iterate through the keys in a movie element
+        if(key.toString()!="description")//to prevent checking for matches in the description
+        {
+        possMatchString = possMatch[key].toString();
+        if(possMatchString != "true" && possMatchString != "false")//to prevent checking for matches in the hd quality
+        {
+            if (possMatchString.toLowerCase().search(searchTerm.toLowerCase().trim()) != -1) //looks for stuff that contains what has been typed in
+                match = true;
+        }
+        }
     }
+    return match;
 };

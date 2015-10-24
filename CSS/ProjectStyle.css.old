@@ -42,28 +42,25 @@ div.searchbar{
    padding-top: 10px;
    padding-bottom: 10px;
    float:left;
-   height:22px;
-   position:relative;
+   height:22px;  
 }
 
 div.searchbar > div#suggestionBox {
 width:470px;
-position: relative;
+position:relative;
 padding-top:5px;
 top:21px;
-left: -228px;
 border:1px ridge lightgrey;
 text-align:left;
 background-color:white;
 z-index:2; /* Used to cause the layering effect */
-overflow:auto;
 }
 
-div.searchbar > div#suggestionBox  > div.suggestions{
+div.searchbar > div#suggestionBox  > .suggestions{
 padding:5px;
 }
 
-div.searchbar > div#suggestionBox  > div.suggestions:hover {
+div.searchbar > div#suggestionBox  > .suggestions:hover {
 background-color:rgb(245,245,245)
 }
 
@@ -72,14 +69,9 @@ display:none;
 }
 
 div.searchbox{
-   position:relative;
    float:left;
 }
-
-/* Originally I had code here to resize the search box but it broke the livesearch so it was removed. */
-
 div.searchbutton{
-  position:relative;
   float:left;
 }
 
@@ -156,10 +148,6 @@ div#movies.gallery > .movieElement > div.titleYearContainer > div.movie_year{
 position:absolute;
 top:20px;
 height:20px; width:200px;
-transition:bottom 1.25s, background-color 1.25s;
--webkit-transition:bottom 1.25s, background-color 1.25s;
--o-transition:bottom 1.25s, background-color 1.25s;
--moz-transition:bottom 1.25s, background-color 1.25s;
 }
 
 div#movies.gallery > .movieElement > div.informationContainer > div.movie_cast {
@@ -187,11 +175,6 @@ height:120px;
 background-color:rgba(0,0,0,0.6);
 }
 
-div#movies.gallery > .movieElement:hover > div.titleYearContainer > div.movie_year{
-bottom:100px;
-background-color:transparent;
-}
-
 div#movies.gallery > .movieElement:hover > div.informationContainer > div.movie_cast{
 height:40px;
 }
@@ -211,6 +194,10 @@ div#movies.listview > .movieElement > img {
 	width:220px; height:220px;
 	padding:5px;
 	border:1px solid lightgrey;
+}
+
+div#movies.listview > .movieElement > div.HD_quality {
+display:none;
 }
 
 div#movies.listview > .movieElement > div.titleYearContainer {
@@ -241,15 +228,7 @@ padding-left:10px;
 }
 
 div#movies.listview > .movieElement > div.informationContainer > .HD_quality {
-position:absolute;
-top:0px;
-left:-210px;
-}
-
-div#movies.listview > .movieElement > div.informationContainer > .HD_quality img {
-height:20px;
-width:40px;
-}
+display:none;}
 
 div#movies.listview > .movieElement > div.informationContainer > div.rating  img {
 height:20px; width:20px; padding-right:5px;

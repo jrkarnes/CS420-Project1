@@ -28,13 +28,32 @@ movieElementMaker.prototype.get_html_unrepeated=function(values){
                     html= this.replace_Block(key, values[key],html);
                 else{ 
                     var re = new RegExp("{{" + key + "}}", 'g');//define the key term we are looking to replace with actual data
-                    html = html.replace(re,values[key]);//replace the generic key term with the objects value at said key
+                    if(values[key]==true)//if the value of the key being looked at is true
+                    {
+                        html=html.replace(re,"<img src='Data/Icons/HD.png'>")//replace the key hd with the image
+                    }
+                    else if(values[key]<=5)//if the key has a value of less than 5(which should only be ratings
+                    {
+                        var numStars= values[key];
+                        var stars = "";
+                        while(numStars > 0)
+                        {
+                            stars+="<span><img src='Data/Icons/gold_star.png'></span>";
+                            --numStars;
+                        }
+                        html = html.replace(re,stars);//will replace the key rating with the variable stars, which should be a string of span statements
+                    }
+                    else
+                    {
+                        html = html.replace(re,values[key]);//replace the generic key term with the objects value at said key
+                    }    
                 }
             }
             return html;
 };
 
-//the parameters are used for a repetitive a block
+//i don't think we need this, let me know what you think, if not i will go through and delete this and references to it
+////the parameters are used for a repetitive a block
 movieElementMaker.prototype.replace_Block = function (block_name, values,template) {
     var block_start_text = "{{#block " + block_name + "}}";
     var block_end_text = "{{#end block " + block_name + "}}";
@@ -68,8 +87,9 @@ movieElementMaker.prototype.getResults = function(searchKey,values){
 };
 
 movieElementMaker.prototype.checkMatch=function(values,searchTerm){    
-    for (var key in values){
-        if (values[key] == searchTerm) 
+   var possMatch = values; 
+    for (var key in possMatch){
+        if (possMatch[key].toLowerCase().search(searchTerm.toLowerCase().trim()) != -1) //looks for stuff that contains what has been typed in
             return true;
         else
             return false;

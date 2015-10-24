@@ -19,6 +19,8 @@ function Display(movieData){
     this.movie_template="#movie-template";
     this.searchButton="#search";//to use for button search
     this.searchField="#search_input";
+    this.suggestion_div="#suggestionBox";
+    this.suggestTempalte="#suggestion-template";
     
     var self = this;
     var MakeGallery_function=function(){
@@ -37,9 +39,14 @@ function Display(movieData){
         self.Search.call(self);
     };
     
+    var LiveSearch_function=function(){
+        self.LiveSearch.call(self);
+    };
+    
     $(this.gridIcon).on("click", MakeGallery_function);
     $(this.listIcon).on("click", MakeList_function);
     $(this.searchButton).on("click",Search_function);
+    $(this.searchField).on('keyup',LiveSearch_function);
     $(this.sortOptions).on('change', MovieSort);
     
     this.load_movies();
@@ -86,4 +93,28 @@ Display.prototype.Search = function(){
     var value = $(this.searchField).val();
     var html = movie_maker.getResults(value,this.movies);
     $(this.movies_div).html(html);   
+};
+
+Display.prototype.LiveSearch = function(){
+    var showSuggestions=false;
+    var template =$(this.suggestTempalte).html();
+    var suggest_maker = new movieElementMaker(template);
+    var value = $(this.searchField).val();
+    var html = suggest_maker.getResults(value,this.movies);
+    if(html != "")
+    {
+        showSuggestions=true;
+    }
+    if(showSuggestions)
+    {
+        $(this.suggestion_div).html(html);
+        $(this.suggestion_div).children(".suggestions").on('click',function(){//suggestions is the clickable suggestion
+            var suggestion=$(this).attr('id');
+            $("#search_input").val(suggestion);//plop the selected movie's title into the search field
+            $("#suggestionBox").hide();//then hide that suggestion box
+        });
+        $(this.suggestion_div).show();
+    }
+    else
+        $(this.suggestion_div).hide();
 };
